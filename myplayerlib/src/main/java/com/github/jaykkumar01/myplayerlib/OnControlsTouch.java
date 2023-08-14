@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.media3.ui.PlayerView;
 
 import com.github.jaykkumar01.myplayerlib.playerutils.MyHandler;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 public class OnControlsTouch implements View.OnTouchListener {
-    private PlayerView playerView;
+    private StyledPlayerView playerView;
 
-    public OnControlsTouch(ConstraintLayout rootLayout,PlayerView playerView) {
+    public OnControlsTouch(ConstraintLayout rootLayout, StyledPlayerView playerView) {
         this.playerView = playerView;
         setTouchAll(rootLayout);
     }

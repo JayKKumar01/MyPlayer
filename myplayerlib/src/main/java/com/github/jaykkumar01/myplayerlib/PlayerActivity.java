@@ -1,18 +1,12 @@
 package com.github.jaykkumar01.myplayerlib;
 
+
+import static com.google.android.exoplayer2.Player.REPEAT_MODE_ONE;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.media3.common.C;
-import androidx.media3.common.MediaItem;
-import androidx.media3.common.MimeTypes;
-import androidx.media3.common.PlaybackParameters;
-import androidx.media3.common.TrackSelectionParameters;
-import androidx.media3.common.util.UnstableApi;
-import androidx.media3.exoplayer.ExoPlayer;
-import androidx.media3.exoplayer.trackselection.DefaultTrackSelector;
-import androidx.media3.ui.PlayerView;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -39,12 +33,19 @@ import com.github.jaykkumar01.myplayerlib.playerutils.TrackDialog;
 import com.github.jaykkumar01.myplayerlib.utils.AspectRatio;
 import com.github.jaykkumar01.myplayerlib.utils.AutoRotate;
 import com.github.jaykkumar01.myplayerlib.playerutils.VideoUI;
+import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
+import com.google.android.exoplayer2.util.MimeTypes;
 import com.google.common.collect.ImmutableList;
 
 
-@UnstableApi public class PlayerActivity extends AppCompatActivity{
+public class PlayerActivity extends AppCompatActivity{
 
-    PlayerView playerView;
+    StyledPlayerView playerView;
     ConstraintLayout rootLayout;
     TextView titleTV;
     ExoPlayer player;
@@ -53,7 +54,6 @@ import com.google.common.collect.ImmutableList;
     PlayerProperties playerProperties;
     private long startPosition = 0;
     private boolean isPaused,caption;
-    private AlertDialog.Builder playbackDialog;
     private int playbackSpeed = 2;
     private boolean pip;
      private boolean expend = true;
@@ -104,6 +104,7 @@ import com.google.common.collect.ImmutableList;
         rootLayout.setOnTouchListener(new OnControlsTouch(rootLayout,playerView));
         titleTV = findViewById(R.id.exo_title);
         titleTV.setText(playerProperties.getTitle());
+        trackSelector = new DefaultTrackSelector(this);
     }
 
     @Override
@@ -232,7 +233,7 @@ import com.google.common.collect.ImmutableList;
         if (player == null){
             return;
         }
-        playbackDialog = new AlertDialog.Builder(this);
+        AlertDialog.Builder playbackDialog = new AlertDialog.Builder(this);
         playbackDialog.setTitle("Change Playback Speed").setPositiveButton("OK",null);
         String[] items = {"0.25x","0.5x","1x (normal)","1.25x","1.5x","2x"};
         playbackDialog.setSingleChoiceItems(items, playbackSpeed, new DialogInterface.OnClickListener() {
@@ -325,7 +326,7 @@ import com.google.common.collect.ImmutableList;
 
     protected void initializePlayer() {
         player = new ExoPlayer.Builder(this)
-                .setTrackSelector(trackSelector == null? new DefaultTrackSelector(this) : trackSelector)
+                .setTrackSelector(trackSelector)
                 .build();
 
         playerView.setPlayer(player);
@@ -334,6 +335,7 @@ import com.google.common.collect.ImmutableList;
         player.setMediaItem(mediaItem);
         player.seekTo(startPosition);
         player.prepare();
+        player.setRepeatMode(REPEAT_MODE_ONE);
         player.play();
         VideoUI.setRatio(this,playerProperties.getPath());
         trackDialog = new TrackDialog(this,player);

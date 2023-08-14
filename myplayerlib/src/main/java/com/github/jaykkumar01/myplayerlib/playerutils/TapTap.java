@@ -15,10 +15,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.media3.common.Player;
-import androidx.media3.ui.PlayerView;
 
 import com.github.jaykkumar01.myplayerlib.R;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 @SuppressLint("UnsafeOptInUsageError")
  public class TapTap extends GestureDetector.SimpleOnGestureListener {
@@ -26,8 +26,8 @@ import com.github.jaykkumar01.myplayerlib.R;
     private static final int TIMEOUT = 600;
     private final Context context;
     private final Activity activity;
-    private final Player player;
-    private final PlayerView playerView;
+    private final ExoPlayer player;
+    private final StyledPlayerView playerView;
     View ar1,ar2,ar3,lar1,lar2,lar3,leftBox,rightBox;
     TextView rightTXT,leftTXT;
     public static int seekVal = 0;
@@ -37,7 +37,7 @@ import com.github.jaykkumar01.myplayerlib.R;
     Handler handler = new Handler();
     private static int prevSide = 0;
 
-    public TapTap(Context context, PlayerView playerView, Player player) {
+    public TapTap(Context context, StyledPlayerView playerView, ExoPlayer player) {
         this.context = context;
         activity = (Activity)context;
         this.playerView = playerView;

@@ -6,17 +6,17 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 
-import androidx.media3.common.Player;
-import androidx.media3.ui.PlayerView;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 public class TouchGesture implements View.OnTouchListener{
     private final ScaleGestureDetector PINCH_ZOOM;
     private final GestureDetector TAP_TAP;
     Context context;
-    PlayerView playerView;
-    Player player;
+    StyledPlayerView playerView;
+    ExoPlayer player;
 
-    public TouchGesture(Context context, PlayerView playerView, Player player) {
+    public TouchGesture(Context context, StyledPlayerView playerView, ExoPlayer player) {
         this.context = context;
         this.playerView = playerView;
         this.player = player;

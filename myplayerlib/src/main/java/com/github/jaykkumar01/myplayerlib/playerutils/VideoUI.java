@@ -8,10 +8,10 @@ import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.media3.common.Format;
-import androidx.media3.exoplayer.ExoPlayer;
 
 import com.github.jaykkumar01.myplayerlib.R;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.Format;
 
 import java.io.IOException;
 

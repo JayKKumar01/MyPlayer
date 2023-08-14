@@ -3,7 +3,7 @@ package com.github.jaykkumar01.myplayerlib.playerutils;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 
-import androidx.media3.ui.PlayerView;
+import com.google.android.exoplayer2.ui.StyledPlayerView;
 
 @SuppressLint("UnsafeOptInUsageError")
 public class MyHandler {
@@ -12,7 +12,7 @@ public class MyHandler {
     private static long TOUCH_ACTIVE = System.currentTimeMillis();
 
 
-    public static void hideControls(PlayerView playerView) {
+    public static void hideControls(StyledPlayerView playerView) {
         TOUCH_ACTIVE = System.currentTimeMillis();
         handler.postDelayed(new Runnable() {
             @Override

@@ -1,20 +1,18 @@
 package com.github.jaykkumar01.myplayerlib.playerutils;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 
-import androidx.media3.common.C;
-import androidx.media3.common.Player;
-import androidx.media3.common.util.UnstableApi;
-import androidx.media3.ui.TrackSelectionDialogBuilder;
+import com.google.android.exoplayer2.C;
+import com.google.android.exoplayer2.ExoPlayer;
+import com.google.android.exoplayer2.ui.TrackSelectionDialogBuilder;
 
-@UnstableApi public class TrackDialog {
+public class TrackDialog {
 
     private Dialog audDialog,vidDialog,subDialog;
     private final Context context;
-    private final Player player;
+    private final ExoPlayer player;
 
-    public TrackDialog(Context context,Player player) {
+    public TrackDialog(Context context,ExoPlayer player) {
         this.context = context;
         this.player = player;
     }
