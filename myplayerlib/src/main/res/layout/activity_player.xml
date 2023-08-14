@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:resize_mode="fit"
         app:show_buffering="when_playing"
-        app:use_controller="true" />
+         />
 
 
 

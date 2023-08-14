@@ -234,7 +234,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1"
             app:played_color="@color/white"
-            tools:ignore="SpeakableTextPresentCheck" />
+             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/exo_bottom_bar"

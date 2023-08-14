@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         if (path != null && path.contains("/")) {
                             vidTitle = path.substring(path.lastIndexOf("/") + 1);
                             selectVideo.setText(vidTitle);
+                            ((TextView)findViewById(R.id.txt)).setText(path);
                         }
 
                     }
